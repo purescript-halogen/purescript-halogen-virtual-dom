@@ -1,0 +1,20 @@
+{
+  "name": "purescript-halogen-virtual-dom",
+  "homepage": "https://github.com/slamdata/purescript-halogen-virtual-dom",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/slamdata/purescript-halogen-virtual-dom.git"
+  },
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules",
+    "output",
+    "bower.json",
+    "package.json"
+  ],
+  "dependencies": {
+    "purescript-halogen": "^1.0.0"
+  }
+}
