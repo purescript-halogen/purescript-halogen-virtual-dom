@@ -5,10 +5,10 @@
     "build": "pulp build -- --censor-lib --strict"
   },
   "devDependencies": {
-    "pulp": "^10.0.0",
-    "purescript": "^0.10.5",
+    "pulp": "^10.0.1",
+    "purescript": "^0.10.7",
     "purescript-psa": "^0.4.0",
-    "rimraf": "^2.5.4"
+    "rimraf": "^2.6.1"
   },
   "dependencies": {
     "virtual-dom": "^2.1.1"
