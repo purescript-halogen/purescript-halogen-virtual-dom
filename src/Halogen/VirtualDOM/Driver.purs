@@ -22,7 +22,7 @@ module Halogen.VirtualDOM.Driver
 import Prelude
 
 import Control.Monad.Aff (Aff)
-import Control.Monad.Eff (Eff)
+import Control.Monad.Eff (Eff, kind Effect)
 import Control.Monad.Eff.Class (liftEff)
 import Control.Monad.Eff.Ref (Ref, modifyRef, newRef, readRef)
 
@@ -42,7 +42,7 @@ import Halogen.VirtualDOM.Renderer (renderHTML)
 
 import Halogen.Aff.Driver (HalogenIO)
 
-newtype RenderState s (f :: * -> *) (g :: * -> *) p o (eff :: # !) =
+newtype RenderState s (f :: Type -> Type) (g :: Type -> Type) p o (eff :: # Effect) =
   RenderState
     { keyId :: Int
     , node :: HTMLElement
@@ -92,7 +92,7 @@ mkRenderSpec element fresh =
         modifyRef fresh (_ + 1)
         keyId <- readRef fresh
         node <- V.createElement vtree
-        appendChild (htmlElementToNode node) (htmlElementToNode element)
+        _ <- appendChild (htmlElementToNode node) (htmlElementToNode element)
         pure $ RenderState { keyId, vtree, node }
       Just (RenderState r) -> do
         node <- V.patch (V.diff r.vtree vtree) r.node
